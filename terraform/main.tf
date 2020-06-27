@@ -8,7 +8,7 @@ provider "google" {
   zone    = "us-central1-c"
 }
 
-/// Terraform plugin for creating random ids
+// Terraform plugin for creating random ids
 resource "random_id" "instance_id" {
  byte_length = 8
 }
