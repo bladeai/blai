@@ -1,0 +1,12 @@
+proxy:
+  secretToken: "a48bd13265f3012d237be9e0d39a3ebfa7d47734557cbc37aaa65ec2f80eea6d"
+singleuser:
+  image:
+    # Get the latest image tag at:
+    # https://hub.docker.com/r/jupyter/datascience-notebook/tags/
+    # Inspect the Dockerfile at:
+    # https://github.com/jupyter/docker-stacks/tree/master/datascience-notebook/Dockerfile
+    name: ksr1729/jupyternotebook
+    tag: latest
+
+singleuser.image.pullPolicy: "Always"

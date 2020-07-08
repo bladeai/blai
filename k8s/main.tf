@@ -11,7 +11,7 @@ resource "google_container_cluster" "gke-cluster" {
   location = "europe-west3-a"
   initial_node_count = 3
   node_config {
-    machine_type = "g1-small"
+    machine_type = "e2-standard-2"
   }
 }
 

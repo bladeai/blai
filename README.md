@@ -5,8 +5,12 @@ clone repo.
 
 cd ks8
 terraform init
-In your initialized directory, run terraform apply and review the planned actions. Your terminal output should indicate the plan is running and what resources will be created.
+In your initialized directory, run:
+terraform apply
 
+review the planned actions. Your terminal output should indicate the plan is running and what resources will be created.
+
+//Have the cluster and the region in the env 
 gcloud container clusters get-credentials bladeai-gke-cluster --region europe-west3-a
 
 Deploying kus Dashboard UI:
@@ -15,6 +19,9 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/a
 
 Now, create a proxy server that will allow you to navigate to the dashboard from the browser on your local machine. This will continue running until you stop the process by pressing
 kubectl proxy
+
+Kubectl will make Dashboard available at 
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 
 »Authenticate to Kubernetes Dashboard
 To use the Kubernetes dashboard, you need to create a ClusterRoleBinding and provide an authorization token. This gives the cluster-admin permission to access the kubernetes-dashboard. Authenticating using kubeconfig is not an option. You can read more about it in the Kubernetes documentation.
@@ -57,4 +64,28 @@ helm install seldon-core seldon-core-operator \
     --namespace seldon-system \
     --set istio.enabled=true
 
+
+export NAMESPACE=seldon-system
+kubectl create namespace $NAMESPACE
+
+Installing jupyter hub
+https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub/setup-jupyterhub.html#setup-jupyterhub
+
+follow the steps:
+helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
+helm repo update
+
+RELEASE=jhub
+NAMESPACE=jhub
+
+cd helm 
+kubectl create namespace $NAMESPACE
+helm upgrade --install $RELEASE jupyterhub/jupyterhub \
+  --namespace $NAMESPACE  \
+  --version=0.9.0 \
+  --values config.yaml
+
+You can find the public IP of the JupyterHub by doing:
+
+ kubectl --namespace=jhub get svc proxy-public
 
