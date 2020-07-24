@@ -1,9 +1,13 @@
 # blai
 Repository for Infrastructure as code and  CICD  for Model Deployment &amp; Management
 
+## Dependencies
+Terraform CLI - https://www.terraform.io/downloads.html
+
+## Setup Instructions
 clone repo.
 
-cd ks8
+cd k8s
 terraform init
 In your initialized directory, run:
 terraform apply
