@@ -5,12 +5,10 @@ Repository for Infrastructure as code and  CICD  for Model Deployment &amp; Mana
 Terraform CLI - https://www.terraform.io/downloads.html
 
 ## Setup Instructions
-clone repo.
-
-cd k8s
-terraform init
-In your initialized directory, run:
-terraform apply
+1. clone repo.
+2. cd k8s
+3. terraform init
+4. In your initialized directory, run: terraform apply
 
 review the planned actions. Your terminal output should indicate the plan is running and what resources will be created.
 
