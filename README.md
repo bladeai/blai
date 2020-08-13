@@ -8,7 +8,10 @@ Terraform CLI - https://www.terraform.io/downloads.html
 1. clone repo.
 2. cd k8s
 3. terraform init
-4. In your initialized directory, run: terraform apply
+4. Make sure you setup the credentials required to create new cluster.
+   (eg. For GCP create the env variable that points to your key: export GOOGLE_APPLICATION_CREDENTIALS=/home/bladeaico/security/blade-ai-282114-aedee4bdb9d8.json)
+   terraform apply
+
 
 review the planned actions. Your terminal output should indicate the plan is running and what resources will be created.
 
